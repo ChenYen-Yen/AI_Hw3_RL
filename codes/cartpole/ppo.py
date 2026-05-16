@@ -149,6 +149,9 @@ if __name__ == "__main__":
         "hyperparameters",
         "|param|value|\n|-|-|\n%s" % ("\n".join([f"|{key}|{value}|" for key, value in vars(args).items()])),
     )
+    
+    # Create checkpoint directory
+    os.makedirs(f"runs/{run_name}/checkpoints", exist_ok=True)
 
     # TRY NOT TO MODIFY: seeding
     random.seed(args.seed)
@@ -320,3 +323,8 @@ if __name__ == "__main__":
 
     envs.close()
     writer.close()
+    
+    # Save final model
+    checkpoint_path = f"runs/{run_name}/checkpoints/final_model.pt"
+    torch.save(agent.state_dict(), checkpoint_path)
+    print(f"\n✓ Model saved to: {checkpoint_path}")

@@ -2,3 +2,5 @@
 private
 runs
 wandb
+__pycache__
+inference_result
