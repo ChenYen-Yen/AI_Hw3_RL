@@ -11,7 +11,6 @@ import torch
 import numpy as np
 from pathlib import Path
 from datetime import datetime
-from gym import Env
 import gymnasium as gym
 import ale_py
 
@@ -65,8 +64,17 @@ def load_model(model_path, device="mps", render=False):
     env = gym.wrappers.GrayscaleObservation(env)
     env = gym.wrappers.FrameStackObservation(env, stack_size=4)
     
+    # Create a wrapper object with single_action_space attribute for Agent initialization
+    class EnvWrapper:
+        def __init__(self, env):
+            self.env = env
+            self.single_action_space = env.action_space
+            self.single_observation_space = env.observation_space
+    
+    env_wrapper = EnvWrapper(env)
+    
     # Create agent
-    agent = Agent(env).to(device)
+    agent = Agent(env_wrapper).to(device)
     
     # Load model state
     if os.path.exists(model_path):

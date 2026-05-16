@@ -10,3 +10,6 @@ inferance.py : 測試模型
 - --episodes : 進行局數
 - --device : 指定裝置
 - --render : 是否顯示
+- --save-results : 儲存成檔案
+
+e.g. python3 codes/atari/inference.py --episodes 3 --device mps --render  --save-results
