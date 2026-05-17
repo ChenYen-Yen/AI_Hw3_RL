@@ -131,7 +131,7 @@ if __name__ == "__main__":
     args.batch_size = int(args.num_envs * args.num_steps)
     args.minibatch_size = int(args.batch_size // args.num_minibatches)
     args.num_iterations = args.total_timesteps // args.batch_size
-    run_name = f"{args.env_id}__{args.exp_name}__{args.seed}__{int(time.time())}"
+    run_name = f"Cartpole/{args.env_id}__{args.exp_name}__{args.seed}__{int(time.time())}"
     if args.track:
         import wandb
 
@@ -323,8 +323,3 @@ if __name__ == "__main__":
 
     envs.close()
     writer.close()
-    
-    # Save final model
-    checkpoint_path = f"runs/{run_name}/checkpoints/final_model.pt"
-    torch.save(agent.state_dict(), checkpoint_path)
-    print(f"\n✓ Model saved to: {checkpoint_path}")
