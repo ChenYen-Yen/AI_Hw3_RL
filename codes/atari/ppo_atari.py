@@ -50,7 +50,7 @@ class Args:
     """the id of the environment (ALE/Breakout-v5 for new Gymnasium format)"""
     total_timesteps: int = 5000000
     """total timesteps of the experiments (reduced for M2 Mac)"""
-    learning_rate: float = 5e-4
+    learning_rate: float = 1.25e-4
     """the learning rate of the optimizer"""
     num_envs: int = 4
     """the number of parallel game environments (reduced for M2 Mac)"""
