@@ -50,7 +50,7 @@ class Args:
     """the id of the environment (ALE/Breakout-v5 for new Gymnasium format)"""
     total_timesteps: int = 5000000
     """total timesteps of the experiments (reduced for M2 Mac)"""
-    learning_rate: float = 2.5e-4
+    learning_rate: float = 5e-4
     """the learning rate of the optimizer"""
     num_envs: int = 4
     """the number of parallel game environments (reduced for M2 Mac)"""
@@ -72,7 +72,7 @@ class Args:
     """the surrogate clipping coefficient"""
     clip_vloss: bool = True
     """Toggles whether or not to use a clipped loss for the value function, as per the paper."""
-    ent_coef: float = 0.05
+    ent_coef: float = 0.01
     """coefficient of the entropy"""
     vf_coef: float = 0.5
     """coefficient of the value function"""
