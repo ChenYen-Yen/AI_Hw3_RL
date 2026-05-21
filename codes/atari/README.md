@@ -1,5 +1,5 @@
-建議執行 : python3 codes/cartpole/ppo.py --track --device cpu
-ppo.py : 主要訓練
+建議執行 : python3 codes/atari/ppo_atari.py --track --device mps
+ppo_atari.py : 主要訓練(on breakout)
 - --track : track using mandb
 - --device cpu : use cpu instead of gpu
 
@@ -11,3 +11,5 @@ inferance.py : 測試模型
 - --device : 指定裝置
 - --render : 是否顯示
 - --save-results : 儲存成檔案
+
+e.g. python3 codes/atari/inference.py --episodes 3 --device mps --render  --save-results

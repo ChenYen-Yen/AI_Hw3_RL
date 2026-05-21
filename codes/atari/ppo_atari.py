@@ -5,6 +5,7 @@ import time
 from dataclasses import dataclass
 
 import gymnasium as gym
+import ale_py
 import numpy as np
 import torch
 import torch.nn as nn
@@ -12,6 +13,9 @@ import torch.optim as optim
 import tyro
 from torch.distributions.categorical import Categorical
 from torch.utils.tensorboard import SummaryWriter
+
+# Register ALE environments with Gymnasium
+gym.register_envs(ale_py)
 
 from cleanrl_utils.atari_wrappers import (  # isort:skip
     ClipRewardEnv,
@@ -30,8 +34,8 @@ class Args:
     """seed of the experiment"""
     torch_deterministic: bool = True
     """if toggled, `torch.backends.cudnn.deterministic=False`"""
-    cuda: bool = True
-    """if toggled, cuda will be enabled by default"""
+    device: str = "mps"
+    """device to use: 'mps' for M1/M2 Mac, 'cpu' for CPU"""
     track: bool = False
     """if toggled, this experiment will be tracked with Weights and Biases"""
     wandb_project_name: str = "cleanRL"
@@ -42,14 +46,14 @@ class Args:
     """whether to capture videos of the agent performances (check out `videos` folder)"""
 
     # Algorithm specific arguments
-    env_id: str = "BreakoutNoFrameskip-v4"
-    """the id of the environment"""
-    total_timesteps: int = 10000000
-    """total timesteps of the experiments"""
-    learning_rate: float = 2.5e-4
+    env_id: str = "ALE/Breakout-v5"
+    """the id of the environment (ALE/Breakout-v5 for new Gymnasium format)"""
+    total_timesteps: int = 5000000
+    """total timesteps of the experiments (reduced for M2 Mac)"""
+    learning_rate: float = 1.25e-4
     """the learning rate of the optimizer"""
-    num_envs: int = 8
-    """the number of parallel game environments"""
+    num_envs: int = 4
+    """the number of parallel game environments (reduced for M2 Mac)"""
     num_steps: int = 128
     """the number of steps to run in each environment per policy rollout"""
     anneal_lr: bool = True
@@ -101,8 +105,8 @@ def make_env(env_id, idx, capture_video, run_name):
             env = FireResetEnv(env)
         env = ClipRewardEnv(env)
         env = gym.wrappers.ResizeObservation(env, (84, 84))
-        env = gym.wrappers.GrayScaleObservation(env)
-        env = gym.wrappers.FrameStack(env, 4)
+        env = gym.wrappers.GrayscaleObservation(env)
+        env = gym.wrappers.FrameStackObservation(env, stack_size=4)
         return env
 
     return thunk
@@ -166,14 +170,25 @@ if __name__ == "__main__":
         "hyperparameters",
         "|param|value|\n|-|-|\n%s" % ("\n".join([f"|{key}|{value}|" for key, value in vars(args).items()])),
     )
+    
+    # Create checkpoint directory
+    os.makedirs(f"runs/{run_name}/checkpoints", exist_ok=True)
 
     # TRY NOT TO MODIFY: seeding
     random.seed(args.seed)
     np.random.seed(args.seed)
     torch.manual_seed(args.seed)
-    torch.backends.cudnn.deterministic = args.torch_deterministic
+    if args.torch_deterministic:
+        torch.manual_seed(args.seed)
 
-    device = torch.device("cuda" if torch.cuda.is_available() and args.cuda else "cpu")
+    # Device selection: MPS for M1/M2 Mac, CPU fallback
+    if args.device == "mps" and torch.backends.mps.is_available():
+        device = torch.device("mps")
+        print("✓ Using MPS (Metal Performance Shaders) for acceleration")
+    else:
+        device = torch.device("cpu")
+        print("✓ Using CPU device")
+    print(f"Device: {device}\n")
 
     # env setup
     envs = gym.vector.SyncVectorEnv(
@@ -185,19 +200,19 @@ if __name__ == "__main__":
     optimizer = optim.Adam(agent.parameters(), lr=args.learning_rate, eps=1e-5)
 
     # ALGO Logic: Storage setup
-    obs = torch.zeros((args.num_steps, args.num_envs) + envs.single_observation_space.shape).to(device)
-    actions = torch.zeros((args.num_steps, args.num_envs) + envs.single_action_space.shape).to(device)
-    logprobs = torch.zeros((args.num_steps, args.num_envs)).to(device)
-    rewards = torch.zeros((args.num_steps, args.num_envs)).to(device)
-    dones = torch.zeros((args.num_steps, args.num_envs)).to(device)
-    values = torch.zeros((args.num_steps, args.num_envs)).to(device)
+    obs = torch.zeros((args.num_steps, args.num_envs) + envs.single_observation_space.shape, dtype=torch.float32).to(device)
+    actions = torch.zeros((args.num_steps, args.num_envs) + envs.single_action_space.shape, dtype=torch.float32).to(device)
+    logprobs = torch.zeros((args.num_steps, args.num_envs), dtype=torch.float32).to(device)
+    rewards = torch.zeros((args.num_steps, args.num_envs), dtype=torch.float32).to(device)
+    dones = torch.zeros((args.num_steps, args.num_envs), dtype=torch.float32).to(device)
+    values = torch.zeros((args.num_steps, args.num_envs), dtype=torch.float32).to(device)
 
     # TRY NOT TO MODIFY: start the game
     global_step = 0
     start_time = time.time()
     next_obs, _ = envs.reset(seed=args.seed)
-    next_obs = torch.Tensor(next_obs).to(device)
-    next_done = torch.zeros(args.num_envs).to(device)
+    next_obs = torch.Tensor(next_obs).to(device).float()
+    next_done = torch.zeros(args.num_envs, dtype=torch.float32).to(device)
 
     for iteration in range(1, args.num_iterations + 1):
         # Annealing the rate if instructed to do so.
@@ -221,8 +236,8 @@ if __name__ == "__main__":
             # TRY NOT TO MODIFY: execute the game and log data.
             next_obs, reward, terminations, truncations, infos = envs.step(action.cpu().numpy())
             next_done = np.logical_or(terminations, truncations)
-            rewards[step] = torch.tensor(reward).to(device).view(-1)
-            next_obs, next_done = torch.Tensor(next_obs).to(device), torch.Tensor(next_done).to(device)
+            rewards[step] = torch.tensor(reward, dtype=torch.float32).to(device).view(-1)
+            next_obs, next_done = torch.Tensor(next_obs).to(device).float(), torch.tensor(next_done, dtype=torch.float32).to(device)
 
             if "final_info" in infos:
                 for info in infos["final_info"]:
@@ -322,8 +337,15 @@ if __name__ == "__main__":
         writer.add_scalar("losses/approx_kl", approx_kl.item(), global_step)
         writer.add_scalar("losses/clipfrac", np.mean(clipfracs), global_step)
         writer.add_scalar("losses/explained_variance", explained_var, global_step)
-        print("SPS:", int(global_step / (time.time() - start_time)))
-        writer.add_scalar("charts/SPS", int(global_step / (time.time() - start_time)), global_step)
+        
+        sps = int(global_step / (time.time() - start_time))
+        print(f"Iteration {iteration}/{args.num_iterations} | Steps: {global_step}/{args.total_timesteps} | SPS: {sps} | PG Loss: {pg_loss.item():.4f} | VF Loss: {v_loss.item():.4f}")
+        writer.add_scalar("charts/SPS", sps, global_step)
 
     envs.close()
     writer.close()
+    
+    # Save final model
+    checkpoint_path = f"runs/{run_name}/checkpoints/final_model.pt"
+    torch.save(agent.state_dict(), checkpoint_path)
+    print(f"\n✓ Model saved to: {checkpoint_path}")
