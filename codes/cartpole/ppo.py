@@ -321,5 +321,10 @@ if __name__ == "__main__":
         print(f"Iteration {iteration}/{args.num_iterations} | Steps: {global_step}/{args.total_timesteps} | SPS: {sps} | PG Loss: {pg_loss.item():.4f} | VF Loss: {v_loss.item():.4f}")
         writer.add_scalar("charts/SPS", sps, global_step)
 
+    # Save the trained model
+    model_path = f"runs/{run_name}/checkpoints/final_model.pt"
+    torch.save(agent.state_dict(), model_path)
+    print(f"\n✓ Model saved to: {model_path}")
+
     envs.close()
     writer.close()
