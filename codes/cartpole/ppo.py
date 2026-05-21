@@ -36,19 +36,19 @@ class Args:
     # Algorithm specific arguments
     env_id: str = "CartPole-v1"
     """the id of the environment"""
-    total_timesteps: int = 100000
+    total_timesteps: int = 10000
     """total timesteps of the experiments (reduced for CartPole fast convergence)"""
-    learning_rate: float = 3e-4
+    learning_rate: float = 0.001
     """the learning rate of the optimizer"""
-    num_envs: int = 4
+    num_envs: int = 8
     """the number of parallel game environments"""
-    num_steps: int = 128
+    num_steps: int = 32
     """the number of steps to run in each environment per policy rollout"""
     anneal_lr: bool = True
     """Toggle learning rate annealing for policy and value networks"""
-    gamma: float = 0.99
+    gamma: float = 0.98
     """the discount factor gamma"""
-    gae_lambda: float = 0.95
+    gae_lambda: float = 0.8
     """the lambda for the general advantage estimation"""
     num_minibatches: int = 4
     """the number of mini-batches"""
@@ -60,7 +60,7 @@ class Args:
     """the surrogate clipping coefficient"""
     clip_vloss: bool = True
     """Toggles whether or not to use a clipped loss for the value function, as per the paper."""
-    ent_coef: float = 0.01
+    ent_coef: float = 0.00
     """coefficient of the entropy"""
     vf_coef: float = 0.5
     """coefficient of the value function"""
