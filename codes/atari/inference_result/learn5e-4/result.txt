@@ -1,0 +1,119 @@
+============================================================
+ATARI BREAKOUT - INFERENCE RESULTS
+============================================================
+
+Timestamp: 20260522_161448
+Model: runs/ALE/Breakout-v5_learningrate5e-4/checkpoints/final_model.pt
+Device: mps
+Render: False
+
+EPISODE RESULTS:
+------------------------------------------------------------
+Episode   1: Reward =     7.0, Steps =    63
+Episode   2: Reward =     6.0, Steps =    51
+Episode   3: Reward =     0.0, Steps =     5
+Episode   4: Reward =     5.0, Steps =    49
+Episode   5: Reward =     5.0, Steps =    48
+Episode   6: Reward =    12.0, Steps =   113
+Episode   7: Reward =     5.0, Steps =    52
+Episode   8: Reward =     1.0, Steps =    17
+Episode   9: Reward =     4.0, Steps =    40
+Episode  10: Reward =     5.0, Steps =    42
+Episode  11: Reward =    16.0, Steps =   142
+Episode  12: Reward =     7.0, Steps =    57
+Episode  13: Reward =     0.0, Steps =     3
+Episode  14: Reward =     0.0, Steps =     3
+Episode  15: Reward =     8.0, Steps =    80
+Episode  16: Reward =    23.0, Steps =   184
+Episode  17: Reward =     5.0, Steps =    45
+Episode  18: Reward =     3.0, Steps =    35
+Episode  19: Reward =     2.0, Steps =    24
+Episode  20: Reward =     2.0, Steps =    25
+Episode  21: Reward =    15.0, Steps =   137
+Episode  22: Reward =     3.0, Steps =    37
+Episode  23: Reward =     0.0, Steps =     3
+Episode  24: Reward =     2.0, Steps =    24
+Episode  25: Reward =     4.0, Steps =    42
+Episode  26: Reward =     3.0, Steps =    40
+Episode  27: Reward =     6.0, Steps =    54
+Episode  28: Reward =     0.0, Steps =     3
+Episode  29: Reward =     3.0, Steps =    42
+Episode  30: Reward =     5.0, Steps =    53
+Episode  31: Reward =     4.0, Steps =    41
+Episode  32: Reward =     0.0, Steps =     3
+Episode  33: Reward =     5.0, Steps =    48
+Episode  34: Reward =     0.0, Steps =     3
+Episode  35: Reward =     8.0, Steps =    78
+Episode  36: Reward =     9.0, Steps =    88
+Episode  37: Reward =     7.0, Steps =    57
+Episode  38: Reward =     4.0, Steps =    42
+Episode  39: Reward =     3.0, Steps =    37
+Episode  40: Reward =     8.0, Steps =    61
+Episode  41: Reward =    17.0, Steps =   148
+Episode  42: Reward =     4.0, Steps =    48
+Episode  43: Reward =     2.0, Steps =    20
+Episode  44: Reward =     0.0, Steps =     3
+Episode  45: Reward =     2.0, Steps =    31
+Episode  46: Reward =     8.0, Steps =    77
+Episode  47: Reward =     0.0, Steps =     3
+Episode  48: Reward =     6.0, Steps =    56
+Episode  49: Reward =     6.0, Steps =    56
+Episode  50: Reward =     0.0, Steps =     3
+Episode  51: Reward =     6.0, Steps =    57
+Episode  52: Reward =     4.0, Steps =    44
+Episode  53: Reward =     6.0, Steps =    47
+Episode  54: Reward =     4.0, Steps =    44
+Episode  55: Reward =     3.0, Steps =    33
+Episode  56: Reward =    10.0, Steps =   100
+Episode  57: Reward =     8.0, Steps =    79
+Episode  58: Reward =     6.0, Steps =    48
+Episode  59: Reward =     0.0, Steps =     3
+Episode  60: Reward =     6.0, Steps =    60
+Episode  61: Reward =    14.0, Steps =   130
+Episode  62: Reward =     4.0, Steps =    38
+Episode  63: Reward =     3.0, Steps =    41
+Episode  64: Reward =     0.0, Steps =     3
+Episode  65: Reward =     1.0, Steps =    16
+Episode  66: Reward =    15.0, Steps =   136
+Episode  67: Reward =     0.0, Steps =     3
+Episode  68: Reward =     5.0, Steps =    53
+Episode  69: Reward =     2.0, Steps =    25
+Episode  70: Reward =     5.0, Steps =    50
+Episode  71: Reward =     4.0, Steps =    41
+Episode  72: Reward =     0.0, Steps =     3
+Episode  73: Reward =     0.0, Steps =     3
+Episode  74: Reward =     4.0, Steps =    38
+Episode  75: Reward =     0.0, Steps =     3
+Episode  76: Reward =     5.0, Steps =    48
+Episode  77: Reward =     6.0, Steps =    53
+Episode  78: Reward =     0.0, Steps =     3
+Episode  79: Reward =     5.0, Steps =    51
+Episode  80: Reward =     5.0, Steps =    48
+Episode  81: Reward =    12.0, Steps =   118
+Episode  82: Reward =     6.0, Steps =    54
+Episode  83: Reward =     7.0, Steps =    67
+Episode  84: Reward =     5.0, Steps =    54
+Episode  85: Reward =     4.0, Steps =    37
+Episode  86: Reward =     8.0, Steps =    68
+Episode  87: Reward =     0.0, Steps =     3
+Episode  88: Reward =     5.0, Steps =    51
+Episode  89: Reward =     7.0, Steps =    65
+Episode  90: Reward =     2.0, Steps =    27
+Episode  91: Reward =     4.0, Steps =    41
+Episode  92: Reward =     0.0, Steps =     3
+Episode  93: Reward =     0.0, Steps =     3
+Episode  94: Reward =     0.0, Steps =     3
+Episode  95: Reward =     0.0, Steps =     3
+Episode  96: Reward =     2.0, Steps =    20
+Episode  97: Reward =     2.0, Steps =    24
+Episode  98: Reward =     4.0, Steps =    43
+Episode  99: Reward =     3.0, Steps =    33
+Episode 100: Reward =     5.0, Steps =    54
+
+STATISTICS:
+------------------------------------------------------------
+Total Episodes:  100
+Average Reward:  4.57
+Max Reward:      23.0
+Min Reward:      0.0
+Total Reward:    457.0

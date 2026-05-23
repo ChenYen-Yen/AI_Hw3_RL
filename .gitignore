@@ -3,5 +3,5 @@ private
 runs
 wandb
 __pycache__
-inference_result
+# inference_result
 .DS_Store

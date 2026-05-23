@@ -1,0 +1,116 @@
+============================================================
+PPO CartPole Inference Results
+============================================================
+
+Timestamp: 20260522_160502
+Model: runs/CartPole/CartPole-v1_learning15e-5/checkpoints/final_model.pt
+Device: cpu
+Render: False
+
+Episode Results:
+------------------------------------------------------------
+Episode 1: Reward = 259.0, Steps = 259
+Episode 2: Reward = 127.0, Steps = 127
+Episode 3: Reward = 247.0, Steps = 247
+Episode 4: Reward = 182.0, Steps = 182
+Episode 5: Reward = 356.0, Steps = 356
+Episode 6: Reward = 364.0, Steps = 364
+Episode 7: Reward = 377.0, Steps = 377
+Episode 8: Reward = 135.0, Steps = 135
+Episode 9: Reward = 252.0, Steps = 252
+Episode 10: Reward = 158.0, Steps = 158
+Episode 11: Reward = 237.0, Steps = 237
+Episode 12: Reward = 376.0, Steps = 376
+Episode 13: Reward = 150.0, Steps = 150
+Episode 14: Reward = 379.0, Steps = 379
+Episode 15: Reward = 425.0, Steps = 425
+Episode 16: Reward = 197.0, Steps = 197
+Episode 17: Reward = 176.0, Steps = 176
+Episode 18: Reward = 136.0, Steps = 136
+Episode 19: Reward = 88.0, Steps = 88
+Episode 20: Reward = 130.0, Steps = 130
+Episode 21: Reward = 134.0, Steps = 134
+Episode 22: Reward = 142.0, Steps = 142
+Episode 23: Reward = 395.0, Steps = 395
+Episode 24: Reward = 153.0, Steps = 153
+Episode 25: Reward = 142.0, Steps = 142
+Episode 26: Reward = 147.0, Steps = 147
+Episode 27: Reward = 238.0, Steps = 238
+Episode 28: Reward = 367.0, Steps = 367
+Episode 29: Reward = 279.0, Steps = 279
+Episode 30: Reward = 153.0, Steps = 153
+Episode 31: Reward = 312.0, Steps = 312
+Episode 32: Reward = 365.0, Steps = 365
+Episode 33: Reward = 266.0, Steps = 266
+Episode 34: Reward = 136.0, Steps = 136
+Episode 35: Reward = 157.0, Steps = 157
+Episode 36: Reward = 127.0, Steps = 127
+Episode 37: Reward = 149.0, Steps = 149
+Episode 38: Reward = 238.0, Steps = 238
+Episode 39: Reward = 25.0, Steps = 25
+Episode 40: Reward = 149.0, Steps = 149
+Episode 41: Reward = 179.0, Steps = 179
+Episode 42: Reward = 259.0, Steps = 259
+Episode 43: Reward = 200.0, Steps = 200
+Episode 44: Reward = 218.0, Steps = 218
+Episode 45: Reward = 239.0, Steps = 239
+Episode 46: Reward = 72.0, Steps = 72
+Episode 47: Reward = 319.0, Steps = 319
+Episode 48: Reward = 169.0, Steps = 169
+Episode 49: Reward = 323.0, Steps = 323
+Episode 50: Reward = 215.0, Steps = 215
+Episode 51: Reward = 131.0, Steps = 131
+Episode 52: Reward = 325.0, Steps = 325
+Episode 53: Reward = 223.0, Steps = 223
+Episode 54: Reward = 261.0, Steps = 261
+Episode 55: Reward = 133.0, Steps = 133
+Episode 56: Reward = 249.0, Steps = 249
+Episode 57: Reward = 179.0, Steps = 179
+Episode 58: Reward = 261.0, Steps = 261
+Episode 59: Reward = 119.0, Steps = 119
+Episode 60: Reward = 198.0, Steps = 198
+Episode 61: Reward = 214.0, Steps = 214
+Episode 62: Reward = 284.0, Steps = 284
+Episode 63: Reward = 382.0, Steps = 382
+Episode 64: Reward = 214.0, Steps = 214
+Episode 65: Reward = 148.0, Steps = 148
+Episode 66: Reward = 199.0, Steps = 199
+Episode 67: Reward = 262.0, Steps = 262
+Episode 68: Reward = 287.0, Steps = 287
+Episode 69: Reward = 163.0, Steps = 163
+Episode 70: Reward = 274.0, Steps = 274
+Episode 71: Reward = 468.0, Steps = 468
+Episode 72: Reward = 133.0, Steps = 133
+Episode 73: Reward = 203.0, Steps = 203
+Episode 74: Reward = 271.0, Steps = 271
+Episode 75: Reward = 125.0, Steps = 125
+Episode 76: Reward = 184.0, Steps = 184
+Episode 77: Reward = 111.0, Steps = 111
+Episode 78: Reward = 245.0, Steps = 245
+Episode 79: Reward = 245.0, Steps = 245
+Episode 80: Reward = 222.0, Steps = 222
+Episode 81: Reward = 88.0, Steps = 88
+Episode 82: Reward = 268.0, Steps = 268
+Episode 83: Reward = 475.0, Steps = 475
+Episode 84: Reward = 166.0, Steps = 166
+Episode 85: Reward = 195.0, Steps = 195
+Episode 86: Reward = 241.0, Steps = 241
+Episode 87: Reward = 171.0, Steps = 171
+Episode 88: Reward = 135.0, Steps = 135
+Episode 89: Reward = 354.0, Steps = 354
+Episode 90: Reward = 111.0, Steps = 111
+Episode 91: Reward = 210.0, Steps = 210
+Episode 92: Reward = 258.0, Steps = 258
+Episode 93: Reward = 366.0, Steps = 366
+Episode 94: Reward = 246.0, Steps = 246
+Episode 95: Reward = 231.0, Steps = 231
+Episode 96: Reward = 215.0, Steps = 215
+Episode 97: Reward = 322.0, Steps = 322
+Episode 98: Reward = 227.0, Steps = 227
+Episode 99: Reward = 263.0, Steps = 263
+Episode 100: Reward = 294.0, Steps = 294
+
+------------------------------------------------------------
+Average Reward: 225.67
+Total Episodes: 100
+============================================================
