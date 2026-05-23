@@ -12,5 +12,4 @@ inferance.py : 測試模型
 - --render : 是否顯示
 - --save-results : 儲存成檔案
 
-e.g. python3 codes/cartpole/inference.py --episodes 
-10 --device cpu --render --save-results
+e.g. python3 codes/cartpole/inference.py --episodes 100 --device cpu --save-results

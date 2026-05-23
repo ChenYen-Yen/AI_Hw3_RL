@@ -4,3 +4,4 @@ runs
 wandb
 __pycache__
 inference_result
+.DS_Store
